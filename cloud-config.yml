@@ -1,0 +1,23 @@
+#cloud-config
+rancher:
+  console: ubuntu
+  services:
+    console:
+      environment:
+        TZ: JST-9
+  docker:
+    engine: docker-17.03.1-ce
+  network:
+    interfaces:
+      eth0:
+        mtu: 1500
+        dhcp: false
+        address: 10.245.0.101/16
+        gateway: 10.245.0.1
+    dns:
+      nameservers:
+        - 10.245.0.29
+#        - 8.8.4.4
+#      search:
+#        - mydomain.com
+#        - example.com
