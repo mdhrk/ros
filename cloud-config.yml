@@ -12,7 +12,7 @@ rancher:
       eth0:
         mtu: 1500
         dhcp: false
-        address: 10.245.0.101/16
+        address: 10.245.21.123/16
         gateway: 10.245.0.1
     dns:
       nameservers:
