@@ -1,0 +1,31 @@
+#cloud-config
+hostname: rancher02
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcYGMzobbqEFsgHampM+DR7bXLvy3bWoPxPPg+2Ib4yvknhKrpQ0iscK6wpoP/EsS6pnfXcv4mOQDkWKOQvnvQTfvJCCspEywq//DHMdVYq1OqH5leserM2Rc5Dx6oY/Y8jIfA0fuf70qtnp/raNCS1JGLQg+sN6BfQ7bCo8I+BL3XlA4w27x6T3QqHFR+Xgi70nOUPCFSoTOZRjhXbittm/Hin3a+Te7Jy/rYyv2ZVIRk2RXJOQIGmfOBTbMUkhmfDNjOLq0p4nxeGqWbInBC1HNBGMV9ZQsN9zLDlcJs5hai94tSZwOQqkX13EQ5oxcX98uIKsUP4+zPi8GfqVpsT+Xwy06Q5ICp4wKZAaU3fCbcJFlCSvoYaQHtZ0ADG7vuPr7vPi3vwWNB7AXCOo0zEjEuQy/SMtRClQm3qCsVfwbVEfDjxg5XSaUvl+qZgksIPjS+oRhNeGDUk0eklmdXN1xolSWqZkZZhld6aE2+VyiNt3ufyc7zx14YsIEi7HiScC70Nkr51yw5jbOXSIYabL4lmTcLGM3g2wp3c9YGe4p19WUrM76jK/k3LEKffnie8byY9UQGLmahbByTo/Ebw/HbK29/Vp4cKnHcHFxjLaWwF0CO4LQTvJm/XET5XNs//yfMgMqTXf0WRGf+XazmZS3P5QCoObgR6veduB9sQQ== mdhrk
+rancher:
+#  service_include:
+#    open-vm-tools: true
+  docker:
+    engine: docker-18.09.6
+  network:
+    interfaces:
+      eth0:
+        mtu: 1500
+        dhcp: false
+        address: 10.245.21.202/16
+        gateway: 10.245.0.1
+    dns:
+      nameservers:
+        - 10.245.0.29
+#        - 8.8.4.4
+#      search:
+#        - mydomain.com
+#        - example.com
+  console: ubuntu
+  services:
+    console:
+      environment:
+        TZ: JST-9
+    syslog:
+      environment:
+        TZ: JST-9
